@@ -1,5 +1,5 @@
 <template>
-  <app-layout> localhost book </app-layout>
+  <app-layout></app-layout>
 </template>
 
 <script>
@@ -16,9 +16,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  mounted() {
-    console.log(this.$page)
   },
 }
 </script>

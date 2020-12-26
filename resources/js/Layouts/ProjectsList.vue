@@ -78,7 +78,7 @@
     </div>
     <ul class="relative z-0 border-b border-gray-200 divide-y divide-gray-200">
       <li
-        v-for="repository in repositories"
+        v-for="repository in $page.repositories"
         :key="repository.id"
         class="relative py-5 pl-4 pr-6 hover:bg-gray-50 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6"
       >
@@ -190,12 +190,6 @@
 import ClickOutside from 'vue-click-outside'
 export default {
   name: 'ProjectsList',
-  props: {
-    repositories: {
-      type: Array,
-      default: () => [],
-    },
-  },
   data() {
     return {
       sortMenu: false,
