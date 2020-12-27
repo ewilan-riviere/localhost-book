@@ -56,3 +56,9 @@ composer install
 ```bash
 php artisan setup:install localhost-book
 ```
+
+## Todo
+
+- <https://gitlab.com/api/v4/users?username=ewiefairy>
+- <https://stackoverflow.com/questions/2514859/regular-expression-for-git-repository/22312124>
+- <https://stackoverflow.com/questions/8206269/how-to-remove-http-from-a-url-in-javascript>
