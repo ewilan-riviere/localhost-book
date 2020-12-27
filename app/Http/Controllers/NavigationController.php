@@ -14,9 +14,12 @@ class NavigationController extends Controller
 {
     public function welcome()
     {
+
         Cache::flush();
+
         // if Cache for 'user' key is empty
         if (!Cache::has('user')) {
+
             // if not user into database
             // API call with github_user
             // save it into as User
@@ -50,6 +53,7 @@ class NavigationController extends Controller
 
         Inertia::share('user', $userCache);
         Inertia::share('repositories', fn (Request $request) => $repositoriesCache);
+
         return Inertia::render('Dashboard');
     }
 }

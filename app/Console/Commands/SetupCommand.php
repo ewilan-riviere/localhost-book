@@ -142,7 +142,7 @@ class SetupCommand extends Command
     {
         return [
             'APP_ENV'   => $this->ask('Environnement', 'production'),
-            'APP_DEBUG' => $this->ask('Debug', 'false'),
+            // 'APP_DEBUG' => $this->ask('Debug', 'false'),
         ];
     }
 
