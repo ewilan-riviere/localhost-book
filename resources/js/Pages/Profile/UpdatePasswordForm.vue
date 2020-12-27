@@ -1,8 +1,6 @@
 <template>
   <jet-form-section @submitted="updatePassword">
-    <template #title>
-      Update Password
-    </template>
+    <template #title> Update Password </template>
 
     <template #description>
       Ensure your account is using a long, random password to stay secure.
@@ -10,10 +8,7 @@
 
     <template #form>
       <div class="col-span-6 sm:col-span-4">
-        <jet-label
-          for="current_password"
-          value="Current Password"
-        />
+        <jet-label for="current_password" value="Current Password" />
         <jet-input
           id="current_password"
           ref="current_password"
@@ -29,10 +24,7 @@
       </div>
 
       <div class="col-span-6 sm:col-span-4">
-        <jet-label
-          for="password"
-          value="New Password"
-        />
+        <jet-label for="password" value="New Password" />
         <jet-input
           id="password"
           v-model="form.password"
@@ -40,17 +32,11 @@
           class="block w-full mt-1"
           autocomplete="new-password"
         />
-        <jet-input-error
-          :message="form.error('password')"
-          class="mt-2"
-        />
+        <jet-input-error :message="form.error('password')" class="mt-2" />
       </div>
 
       <div class="col-span-6 sm:col-span-4">
-        <jet-label
-          for="password_confirmation"
-          value="Confirm Password"
-        />
+        <jet-label for="password_confirmation" value="Confirm Password" />
         <jet-input
           id="password_confirmation"
           v-model="form.password_confirmation"
@@ -66,10 +52,7 @@
     </template>
 
     <template #actions>
-      <jet-action-message
-        :on="form.recentlySuccessful"
-        class="mr-3"
-      >
+      <jet-action-message :on="form.recentlySuccessful" class="mr-3">
         Saved.
       </jet-action-message>
 
@@ -84,43 +67,48 @@
 </template>
 
 <script>
-    import JetActionMessage from '@/Jetstream/ActionMessage'
-    import JetButton from '@/Jetstream/Button'
-    import JetFormSection from '@/Jetstream/FormSection'
-    import JetInput from '@/Jetstream/Input'
-    import JetInputError from '@/Jetstream/InputError'
-    import JetLabel from '@/Jetstream/Label'
+import JetActionMessage from '@/Jetstream/ActionMessage'
+import JetButton from '@/Jetstream/Button'
+import JetFormSection from '@/Jetstream/FormSection'
+import JetInput from '@/Jetstream/Input'
+import JetInputError from '@/Jetstream/InputError'
+import JetLabel from '@/Jetstream/Label'
 
-    export default {
-        components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetInputError,
-            JetLabel,
-        },
+export default {
+  components: {
+    JetActionMessage,
+    JetButton,
+    JetFormSection,
+    JetInput,
+    JetInputError,
+    JetLabel,
+  },
 
-        data() {
-            return {
-                form: this.$inertia.form({
-                    current_password: '',
-                    password: '',
-                    password_confirmation: '',
-                }, {
-                    bag: 'updatePassword',
-                }),
-            }
+  data() {
+    return {
+      form: this.$inertia.form(
+        {
+          current_password: '',
+          password: '',
+          password_confirmation: '',
         },
-
-        methods: {
-            updatePassword() {
-                this.form.put(route('user-password.update'), {
-                    preserveScroll: true
-                }).then(() => {
-                    this.$refs.current_password.focus()
-                })
-            },
-        },
+        {
+          bag: 'updatePassword',
+        }
+      ),
     }
+  },
+
+  methods: {
+    updatePassword() {
+      this.form
+        .put(route('user-password.update'), {
+          preserveScroll: true,
+        })
+        .then(() => {
+          this.$refs.current_password.focus()
+        })
+    },
+  },
+}
 </script>

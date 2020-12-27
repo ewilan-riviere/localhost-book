@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
@@ -15,11 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Inertia::share('user', fn (Request $request) => $request->user()
-            ? $request->user()->only('id', 'name', 'email')
-            : null);
-        Inertia::share('appName', fn (Request $request) => config('app.name'));
-        Inertia::share('repositories', fn (Request $request) => RepositoryProvider::getRepositories());
+        Inertia::share('appName', config('app.name'));
     }
 
     /**

@@ -4,7 +4,7 @@
       class="pt-4 pb-4 pl-4 pr-6 border-t border-b border-gray-200 sm:pl-6 lg:pl-8 xl:pl-6 xl:pt-6 xl:border-t-0"
     >
       <div class="flex items-center">
-        <h1 class="flex-1 text-lg font-medium">Projects</h1>
+        <h1 class="flex-1 text-lg font-medium">Virtual Hosts detected</h1>
         <div class="relative">
           <button
             id="sort-menu"
@@ -95,14 +95,20 @@
 
               <span class="block">
                 <h2 class="text-sm font-medium">
-                  <a href="#">
+                  <a :href="repository.vhost_link">
                     <span class="absolute inset-0" aria-hidden="true"></span>
-                    Workcation <span class="sr-only">Running</span>
+                    {{ getBasicUrl(repository.vhost_link) }}
+                    <span class="sr-only">Running</span>
                   </a>
                 </h2>
               </span>
             </div>
-            <a href="#" class="relative group flex items-center space-x-2.5">
+            <a
+              :href="repository.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative group flex items-center space-x-2.5"
+            >
               <svg
                 class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500"
                 viewBox="0 0 18 18"
@@ -120,7 +126,7 @@
               <span
                 class="text-sm font-medium text-gray-500 truncate group-hover:text-gray-900"
               >
-                debbielewis/workcation
+                {{ repository.author }}/{{ repository.name }}
               </span>
             </a>
           </div>
@@ -189,7 +195,7 @@
 <script>
 import ClickOutside from 'vue-click-outside'
 export default {
-  name: 'ProjectsList',
+  name: 'VirtualHostList',
   data() {
     return {
       sortMenu: false,
@@ -201,6 +207,9 @@ export default {
     },
     sortMenuHide() {
       this.sortMenu = false
+    },
+    getBasicUrl(url) {
+      return url.replace(/(^\w+:|^)\/\//, '')
     },
   },
   directives: {

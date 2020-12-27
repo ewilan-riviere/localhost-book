@@ -39,6 +39,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github',
     ];
 
     /**
@@ -70,4 +71,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getGithubAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

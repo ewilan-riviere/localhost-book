@@ -51,6 +51,7 @@
           <button
             class="inline-flex items-center justify-center p-2 text-indigo-400 bg-indigo-600 rounded-md hover:text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
             aria-expanded="false"
+            @click="mobileMenu = !mobileMenu"
           >
             <span class="sr-only">Open main menu</span>
             <!-- Icon when menu is closed. -->
@@ -60,7 +61,8 @@
               Menu open: "hidden", Menu closed: "block"
             -->
             <svg
-              class="block w-6 h-6"
+              :class="mobileMenu ? 'hidden' : 'block'"
+              class="w-6 h-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -81,7 +83,8 @@
               Menu open: "block", Menu closed: "hidden"
             -->
             <svg
-              class="hidden w-6 h-6"
+              :class="mobileMenu ? 'block' : 'hidden'"
+              class="w-6 h-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -102,10 +105,11 @@
           <div class="flex items-center justify-end">
             <div class="flex">
               <a
-                href="#"
+                href="phpinfo"
                 class="px-3 py-2 text-sm font-medium text-indigo-200 rounded-md hover:text-white"
-                >Documentation</a
               >
+                phpInfo
+              </a>
               <a
                 href="#"
                 class="px-3 py-2 text-sm font-medium text-indigo-200 rounded-md hover:text-white"
@@ -127,7 +131,7 @@
                   <span class="sr-only">Open user menu</span>
                   <img
                     class="w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
+                    :src="$page.user.github.avatar_url"
                     alt=""
                   />
                 </button>
@@ -181,7 +185,7 @@
 
       Menu open: "block", Menu closed: "hidden"
     -->
-    <div class="hidden lg:hidden">
+    <div :class="mobileMenu ? 'block' : 'hidden'" class="lg:hidden">
       <div class="px-2 pt-2 pb-3">
         <a
           href="#"
@@ -225,6 +229,7 @@ export default {
   data() {
     return {
       profileMenu: false,
+      mobileMenu: false,
     }
   },
   methods: {

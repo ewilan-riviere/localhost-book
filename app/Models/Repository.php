@@ -12,6 +12,10 @@ class Repository extends Model
     protected $fillable = [
         'name',
         'vhost_link',
-        'vhost_path'
+        'vhost_path',
+        'author',
+        'url',
+        'clone',
+        'branch'
     ];
 }

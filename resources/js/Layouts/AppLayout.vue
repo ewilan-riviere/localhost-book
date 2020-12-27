@@ -31,7 +31,7 @@
                   <div class="flex space-x-3">
                     <img
                       class="w-6 h-6 rounded-full"
-                      src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
+                      :src="$page.user.github.avatar_url"
                       alt=""
                     />
                     <div class="flex-1 space-y-1">

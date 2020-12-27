@@ -17,5 +17,13 @@ export default {
       default: () => [],
     },
   },
+  mounted() {
+    console.log(this.$page)
+  },
+  metaInfo() {
+    return {
+      title: `localhost`,
+    }
+  },
 }
 </script>

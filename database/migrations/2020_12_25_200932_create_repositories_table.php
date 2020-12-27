@@ -16,8 +16,12 @@ class CreateRepositoriesTable extends Migration
         Schema::create('repositories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('vhost_link');
-            $table->string('vhost_path');
+            $table->string('vhost_link')->nullable();
+            $table->string('vhost_path')->nullable();
+            $table->string('author')->nullable();
+            $table->string('url')->nullable();
+            $table->string('clone')->nullable();
+            $table->string('branch')->nullable();
             $table->timestamps();
         });
     }
